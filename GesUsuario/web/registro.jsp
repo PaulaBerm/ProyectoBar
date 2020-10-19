@@ -26,13 +26,13 @@
                     <div class="col-md-6 pl-1">
                         <div class="form-group">
                             <label style="color:white">Nombre:</label>
-                            <input type="email"  name="correo" class="form-control" value="">
+                            <input type="text"  name="nombre" class="form-control" value="">
                         </div>
                     </div>
                     <div class="col-md-6 pl-1">
                         <div class="form-group">
                             <label style="color:white">Apellido:</label>
-                            <input type="password" name="pass" class="form-control" value="">
+                            <input type="text" name="apellido" class="form-control" value="">
                         </div>
                     </div>
                 </div>

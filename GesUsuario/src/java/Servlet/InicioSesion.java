@@ -6,6 +6,7 @@
 package Servlet;
 
 import Controlador.Consultas;
+import ModeloVO.CUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,19 +34,34 @@ public class InicioSesion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
-        String correo = request.getParameter("correo");
+        HttpSession session=request.getSession();
+        String usuario = request.getParameter("usuario");
         String contraseña = request.getParameter("pass");
 
         Consultas co = new Consultas();
-        
-        if (co.autenticacion(correo, contraseña)) {
+        CUsuario cu = new CUsuario();
+        cu = co.autenticacion(usuario, contraseña);
+
+        if (cu.getCorreo().equals(usuario) && cu.getContraseña().equals(contraseña)) {
             HttpSession objsesion = request.getSession(true);
-            objsesion.setAttribute("correo",  correo);
+            objsesion.setAttribute("usuario", usuario);
             
-            response.sendRedirect("indexAdministrador.jsp");///Aquí pones tu index Danieel
+            
+                        //session.getAttribute("IDROL");
+            session.setAttribute("IDROL", cu.getRol());
+            String primero=String.valueOf(session.getAttribute("IDROL"));
+            Integer segundo = Integer.parseInt(primero);
+            if(segundo == 1){
+                response.sendRedirect("administrador.jsp");
+            }else if(segundo == 2 ){
+                response.sendRedirect("cliente.jsp");
+            }else if(segundo == 3){
+                response.sendRedirect("indexEmpleado.jsp");
+            }
+          
         } else {
-            response.sendRedirect("inicio.jsp");
+            response.sendRedirect("index.jsp");
+
         }
     }
 

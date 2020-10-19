@@ -36,7 +36,6 @@ public class RegistrarUsuarios extends HttpServlet {
         
         String correo = request.getParameter("correo");
         String contraseña = request.getParameter("pass"); 
-        String usuario = request.getParameter("usuario");
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");       
         

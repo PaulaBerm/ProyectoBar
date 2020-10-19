@@ -21,11 +21,11 @@
             <form action="Iniciar" method="post" id="forminicio">
                 <div class="form-group text-center"> 
                     <img src="assets/img/bar.png.png" height="125" width="125"/>
-                    <p style="color:white"><strong>Bienvenidos al Sistema de Login</strong></p>
+                    <p style="color:white"><strong>Login del bar La Fonda Paisa</strong></p>
                 </div>
                 <div class="form-group">
                     <label style="color:white">Correo:</label>
-                    <input class="form-control" type="email" name="correo" id="txtCorreo" placeholder="Ingrese Usuario"/><br>
+                    <input class="form-control" type="email" name="usuario" id="txtCorreo" placeholder="Ingrese correo eléctronico"/><br>
                 </div>
                 <div class="form-group">
                     <label style="color:white">Contraseña:</label>

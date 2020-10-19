@@ -1,0 +1,527 @@
+
+img {
+  max-width: 100%;
+  border-radius: 0.1875rem;
+}
+
+.img-raised {
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+}
+
+.table .img-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.table-shopping .img-container {
+  width: 120px;
+  max-height: 160px;
+  overflow: hidden;
+  display: block;
+}
+
+.table-shopping .img-container img {
+  width: 100%;
+}
+
+.sidebar .logo-tim img,
+.off-canvas-sidebar .logo-tim img {
+  width: 60px;
+  height: 60px;
+}
+
+.fixed-plugin img {
+  border-radius: 0;
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.fixed-plugin .dropdown-menu>li>a.img-holder {
+  font-size: 16px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #FFF;
+  border: 3px solid #FFF;
+  padding-left: 0;
+  padding-right: 0;
+  opacity: 1;
+  cursor: pointer;
+  display: block;
+  max-height: 100px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.fixed-plugin .dropdown-menu>li>a.img-holder img {
+  margin-top: auto;
+}
+
+.fixed-plugin .dropdown-menu>li>a.img-holder img {
+  margin-top: auto;
+}
+
+.fixed-plugin .dropdown-menu>li a.switch-trigger:hover,
+.fixed-plugin .dropdown-menu>li>a.switch-trigger:focus {
+  background-color: transparent;
+}
+
+.fixed-plugin .dropdown-menu>li:hover>a.img-holder,
+.fixed-plugin .dropdown-menu>li:focus>a.img-holder {
+  border-color: rgba(0, 187, 255, 0.53);
+}
+
+.fixed-plugin .dropdown-menu>.active>a.img-holder,
+.fixed-plugin .dropdown-menu>.active>a.img-holder {
+  border-color: #00bbff;
+  background-color: #FFFFFF;
+}
+
+.card .avatar {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.card-user .avatar {
+  width: 124px;
+  height: 124px;
+  border: 1px solid #FFFFFF;
+  position: relative;
+}
+
+.card-user .card-body {
+  min-height: 240px;
+}
+
+.card-user hr {
+  margin: 5px 15px;
+}
+
+.card-user .button-container {
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.card-plain:not(.card-subcategories).card-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.card-chart .card-header .card-category {
+  margin-bottom: 5px;
+}
+
+.form-group.no-border.form-control-lg .input-group-append .input-group-text,
+.input-group.no-border.form-control-lg .input-group-append .input-group-text {
+  padding: 15px 0 15px 19px;
+}
+
+.form-group.no-border.form-control-lg .form-control,
+.input-group.no-border.form-control-lg .form-control {
+  padding: 15px 19px;
+}
+
+.form-group.no-border.form-control-lg .form-control+.input-group-prepend .input-group-text,
+.form-group.no-border.form-control-lg .form-control+.input-group-append .input-group-text,
+.input-group.no-border.form-control-lg .form-control+.input-group-prepend .input-group-text,
+.input-group.no-border.form-control-lg .form-control+.input-group-append .input-group-text {
+  padding: 15px 19px 15px 0;
+}
+
+.form-group.form-control-lg .form-control,
+.input-group.form-control-lg .form-control {
+  padding: 14px 18px;
+}
+
+.form-group.form-control-lg .form-control+.input-group-prepend .input-group-text,
+.form-group.form-control-lg .form-control+.input-group-append .input-group-text,
+.input-group.form-control-lg .form-control+.input-group-prepend .input-group-text,
+.input-group.form-control-lg .form-control+.input-group-append .input-group-text {
+  padding: 14px 18px 14px 0;
+}
+
+.form-group.form-control-lg .input-group-prepend .input-group-text,
+.form-group.form-control-lg .input-group-append .input-group-text,
+.input-group.form-control-lg .input-group-prepend .input-group-text,
+.input-group.form-control-lg .input-group-append .input-group-text {
+  padding: 14px 0 15px 18px;
+}
+
+.form-group.form-control-lg .input-group-prepend .input-group-text+.form-control,
+.form-group.form-control-lg .input-group-append .input-group-text+.form-control,
+.input-group.form-control-lg .input-group-prepend .input-group-text+.form-control,
+.input-group.form-control-lg .input-group-append .input-group-text+.form-control {
+  padding: 15px 18px 15px 16px;
+}
+
+.form-group.no-border .form-control,
+.input-group.no-border .form-control {
+  padding: 11px 19px;
+}
+
+.form-group.no-border .form-control+.input-group-prepend .input-group-text,
+.form-group.no-border .form-control+.input-group-append .input-group-text,
+.input-group.no-border .form-control+.input-group-prepend .input-group-text,
+.input-group.no-border .form-control+.input-group-append .input-group-text {
+  padding: 11px 19px 11px 0;
+}
+
+.form-group.no-border .input-group-prepend .input-group-text,
+.form-group.no-border .input-group-append .input-group-text,
+.input-group.no-border .input-group-prepend .input-group-text,
+.input-group.no-border .input-group-append .input-group-text {
+  padding: 11px 0 11px 19px;
+}
+
+.form-group .form-control,
+.input-group .form-control {
+  padding: 10px 18px 10px 18px;
+}
+
+.form-group .form-control+.input-group-prepend .input-group-text,
+.form-group .form-control+.input-group-append .input-group-text,
+.input-group .form-control+.input-group-prepend .input-group-text,
+.input-group .form-control+.input-group-append .input-group-text {
+  padding: 10px 18px 10px 0;
+}
+
+.form-group .input-group-prepend .input-group-text,
+.form-group .input-group-append .input-group-text,
+.input-group .input-group-prepend .input-group-text,
+.input-group .input-group-append .input-group-text {
+  padding: 10px 0 10px 18px;
+}
+
+.form-group .input-group-prepend .input-group-text+.form-control,
+.form-group .input-group-prepend .input-group-text~.form-control,
+.form-group .input-group-append .input-group-text+.form-control,
+.form-group .input-group-append .input-group-text~.form-control,
+.input-group .input-group-prepend .input-group-text+.form-control,
+.input-group .input-group-prepend .input-group-text~.form-control,
+.input-group .input-group-append .input-group-text+.form-control,
+.input-group .input-group-append .input-group-text~.form-control {
+  padding: 10px 19px 11px 16px;
+}
+
+.form-group.no-border .form-control,
+.form-group.no-border .form-control+.input-group-prepend .input-group-text,
+.form-group.no-border .form-control+.input-group-append .input-group-text,
+.input-group.no-border .form-control,
+.input-group.no-border .form-control+.input-group-prepend .input-group-text,
+.input-group.no-border .form-control+.input-group-append .input-group-text {
+  background-color: rgba(222, 222, 222, 0.3);
+  border: medium none;
+}
+
+.form-group.no-border .form-control:focus,
+.form-group.no-border .form-control:active,
+.form-group.no-border .form-control:active,
+.form-group.no-border .form-control+.input-group-prepend .input-group-text:focus,
+.form-group.no-border .form-control+.input-group-prepend .input-group-text:active,
+.form-group.no-border .form-control+.input-group-prepend .input-group-text:active,
+.form-group.no-border .form-control+.input-group-append .input-group-text:focus,
+.form-group.no-border .form-control+.input-group-append .input-group-text:active,
+.form-group.no-border .form-control+.input-group-append .input-group-text:active,
+.input-group.no-border .form-control:focus,
+.input-group.no-border .form-control:active,
+.input-group.no-border .form-control:active,
+.input-group.no-border .form-control+.input-group-prepend .input-group-text:focus,
+.input-group.no-border .form-control+.input-group-prepend .input-group-text:active,
+.input-group.no-border .form-control+.input-group-prepend .input-group-text:active,
+.input-group.no-border .form-control+.input-group-append .input-group-text:focus,
+.input-group.no-border .form-control+.input-group-append .input-group-text:active,
+.input-group.no-border .form-control+.input-group-append .input-group-text:active {
+  border: medium none;
+  background-color: rgba(222, 222, 222, 0.5);
+}
+
+.form-group.no-border .form-control:focus+.input-group-prepend .input-group-text,
+.form-group.no-border .form-control:focus+.input-group-append .input-group-text,
+.input-group.no-border .form-control:focus+.input-group-prepend .input-group-text,
+.input-group.no-border .form-control:focus+.input-group-append .input-group-text {
+  background-color: rgba(222, 222, 222, 0.5);
+}
+
+.form-group.no-border .input-group-prepend .input-group-text,
+.form-group.no-border .input-group-append .input-group-text,
+.input-group.no-border .input-group-prepend .input-group-text,
+.input-group.no-border .input-group-append .input-group-text {
+  background-color: rgba(222, 222, 222, 0.3);
+  border: none;
+}
+
+
+.has-error .form-control-feedback,
+.has-error .control-label {
+  color: #FF3636;
+}
+
+.has-success .form-control-feedback,
+.has-success .control-label {
+  color: #18ce0f;
+}
+
+.has-danger .form-control:focus+.input-group-append .input-group-text,
+.has-danger .form-control:focus+.input-group-prepend .input-group-text {
+  color: #FF3636;
+}
+
+.has-success .form-control:focus+.input-group-append .input-group-text,
+.has-success .form-control:focus+.input-group-prepend .input-group-text {
+  color: #18ce0f;
+}
+
+.input-group-append .input-group-text+.form-control,
+.input-group-append .input-group-text~.form-control,
+.input-group-prepend .input-group-text+.form-control,
+.input-group-prepend .input-group-text~.form-control {
+  padding: -0.5rem 0.7rem;
+  padding-left: 18px;
+}
+
+.input-group,
+.form-group {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.input-group .form-control-static,
+.form-group .form-control-static {
+  margin-top: 9px;
+}
+
+.input-group .form-control:not(:first-child):not(:last-child),
+.input-group-btn:not(:first-child):not(:last-child) {
+  border-radius: 30px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0 none;
+}
+
+.input-group .form-control:first-child,
+.input-group-btn:first-child>.dropdown-toggle,
+.input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {
+  border-right: 0 none;
+}
+
+.input-group .form-control:last-child,
+.input-group-btn:last-child>.dropdown-toggle,
+.input-group-btn:first-child>.btn:not(:first-child) {
+  border-left: 0 none;
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  background-color: #E3E3E3;
+  color: #888;
+  cursor: not-allowed;
+}
+
+textarea.form-control {
+  max-width: 100%;
+  max-height: 80px;
+  padding: 10px 10px 0 0;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #E3E3E3;
+  border-radius: 0;
+  line-height: 2;
+}
+
+textarea.form-control:focus,
+textarea.form-control:active {
+  border-left: none;
+  border-top: none;
+  border-right: none;
+}
+
+.has-success.form-group .form-control,
+.has-success.form-group.no-border .form-control,
+.has-danger.form-group .form-control,
+.has-danger.form-group.no-border .form-control {
+  padding-right: 40px;
+}
+
+.form-control-lg {
+  padding: 0;
+  font-size: inherit;
+  line-height: 0;
+  border-radius: 0;
+}
+.form-control input[type="checkbox"]:disabled+.form-check-sign::before,
+.checkbox input[type="checkbox"]:disabled+.form-check-sign::after {
+  cursor: not-allowed;
+}
+
+.navbar.bg-white .input-group .form-control::-moz-placeholder,
+.navbar.bg-white .input-group.no-border .form-control::-moz-placeholder {
+  color: #888;
+}
+
+.navbar.bg-white .input-group .form-control:-ms-input-placeholder,
+.navbar.bg-white .input-group.no-border .form-control:-ms-input-placeholder {
+  color: #888;
+}
+
+.navbar.bg-white .input-group .form-control::-webkit-input-placeholder,
+.navbar.bg-white .input-group.no-border .form-control::-webkit-input-placeholder {
+  color: #888;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.title.title-up {
+  text-transform: uppercase;
+}
+
+.title.title-up a {
+  color: #2c2c2c;
+  text-decoration: none;
+}
+
+.title+.category {
+  margin-top: -10px;
+}
+
+.page-header .title {
+  margin-bottom: 15px;
+}
+
+.page-header .title+h4 {
+  margin-top: 10px;
+}
+
+.panel-header .header .title {
+  color: #FFFFFF;
+}
+
+.card .card-header .card-title {
+  margin-top: 10px;
+}
+
+h5,
+.h5 {
+  font-size: 1.57em;
+  line-height: 1.4em;
+  margin-bottom: 15px;
+}
+
+.fixed-plugin h5 {
+  font-size: 14px;
+  margin: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+.card-user .image {
+  height: 120px;
+}
+
+.card-user .author {
+  text-align: center;
+  text-transform: none;
+  margin-top: -77px;
+}
+
+.card-user .author a+p.description {
+  margin-top: -7px;
+}
+
+.btn-primary {
+  background-color: #f96332;
+  color: #FFFFFF;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.show>.btn-primary.dropdown-toggle,
+.show>.btn-primary.dropdown-toggle:focus,
+.show>.btn-primary.dropdown-toggle:hover {
+  background-color: #fa7a50;
+  color: #FFFFFF;
+  box-shadow: none;
+  border-color: #fa7a50;
+}
+
+.btn-primary:not([data-action]):not([class*="btn-outline-"]):hover {
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.17);
+}
+
+.btn-primary.disabled,
+.btn-primary.disabled:hover,
+.btn-primary.disabled:focus,
+.btn-primary.disabled.focus,
+.btn-primary.disabled:active,
+.btn-primary.disabled.active,
+.btn-primary:disabled,
+.btn-primary:disabled:hover,
+.btn-primary:disabled:focus,
+.btn-primary:disabled.focus,
+.btn-primary:disabled:active,
+.btn-primary:disabled.active,
+.btn-primary[disabled],
+.btn-primary[disabled]:hover,
+.btn-primary[disabled]:focus,
+.btn-primary[disabled].focus,
+.btn-primary[disabled]:active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary,
+fieldset[disabled] .btn-primary:hover,
+fieldset[disabled] .btn-primary:focus,
+fieldset[disabled] .btn-primary.focus,
+fieldset[disabled] .btn-primary:active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #f96332;
+  border-color: #f96332;
+}
+
+.btn-primary.btn-link {
+  color: #f96332;
+}
+
+.btn-primary.btn-link:hover,
+.btn-primary.btn-link:focus,
+.btn-primary.btn-link:active {
+  background-color: transparent;
+  color: #fa7a50;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.sidebar .nav li>a,
+.off-canvas-sidebar .nav li>a {
+    margin: 10px 15px 0;
+    border-radius: 30px;
+    color: #FFFFFF;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 0.7142em;
+    padding: 10px 8px;
+    line-height: 1.625rem;
+}
+
