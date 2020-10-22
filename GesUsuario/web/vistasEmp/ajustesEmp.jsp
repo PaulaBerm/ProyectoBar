@@ -32,7 +32,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-
+        
+        <link rel="stylesheet" media="only screen and (max-width: 768px)" href="formularioEmp.css">
+        <link rel="stylesheet" media="only screen and (max-width: 768px)" href="cssInterEmpleado.css">
+        
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <link href="./assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="./assets/css/sb-admin_Emp.css" rel="stylesheet" type="text/css"/>
@@ -192,12 +195,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="title">Datos del Perfil</h5>
-                                    </div>
                                     <div class="card-body">
                                         <form name="accion" action="ControladorEmp?accion=Guardar Cambios" method="post" class="formulario" id="formulario">
                                             <!-- Grupo: Nombre -->
+                                            <h5 class="title">Datos del Perfil</h5>
                                             <div class="formulario__grupo" id="grupo__nombre">
                                                 <label for="nombre" class="formulario__label">Nombre</label>
                                                 <div class="formulario__grupo-input">
@@ -271,7 +272,7 @@
                                             <div class="formulario__grupo formulario__grupo-btn-enviar">
                                                 <input type="hidden" name="txtIdEm" value="<%= inf.getId_empleado()%>">
                                                 <input type="hidden" name="txtIdUs" value="<%= inf.getId_usuario()%>">
-                                                <button type="submit" class="formulario__btn" id="guardar" name="accion" value="Guardar Cambios">Guardar Cambios</button>
+                                                <button type="submit" class="formulario__btn" id="guardar" onclick="si()" name="accion" value="Guardar Cambios">Guardar Cambios</button>
                                                 <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
                                             </div>
                                         </form>
@@ -289,7 +290,7 @@
     <script src="./assets/js/formularioEmp.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
-    <script src="./assets/js/empleado.js" type="text/javascript"></script>
+    
 
     <script src="./assets/js/jquery.js" type="text/javascript"></script>
     <script src="./assets/js/bootstrap.bundle.js" type="text/javascript"></script>

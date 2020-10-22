@@ -4,6 +4,7 @@
     Author     : Paula
 --%>
 
+<%@page import="ModeloVO.CUsuario"%>
 <%@page import="Controlador.EmpleadoC"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
@@ -47,15 +48,10 @@
         <script src="./assets/js/sweetalert.min.js" type="text/javascript"></script>
 
         <script src="./assets/js/empleado.js" type="text/javascript"></script>
-        <script>
-            $(document).ready(function ()
-            {
-                $(".tablesorter").DataTable();
-            }
-            );
-        </script>
 
-        <script type="text/javascript" src="jquery.tablesorter.js"></script> 
+        <!--
+         <script type="text/javascript" src="jquery.tablesorter.js"></script> 
+        -->
         <style type="text/css">
             .img {
                 max-width: 200px;
@@ -63,11 +59,13 @@
                 margin: auto;
                 position: relative;
                 align-content: center;
-                }
+            }
         </style>
-        </head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
-        <body id="page-top">
+    </head>
+
+    <body id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
             <form action="" method="post">
@@ -88,7 +86,7 @@
                     <!-- Divider -->
                     <hr class="sidebar-divider my-0">
                     <!-- Nav Item - Dashboard -->
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="ControladorEmp?accion=inicio">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span>Inicio</span></a>
@@ -100,7 +98,7 @@
                         <p>Pedido</p>
                     </div>
                     <!-- Nav Item - Pages Collapse Menu -->
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link collapsed" href="ControladorEmp?accion=pedido">
                             <!--data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"-->
                             <i class="fas fa-fw fa-clipboard-list"></i>
@@ -151,109 +149,99 @@
                 </ul>
             </form>
 
-                <!-- Content Wrapper -->
-                <div id="content-wrapper" class="d-flex flex-column">
-                    <!-- Main Content -->
-                    <div id="content">
-                        <!-- Topbar -->
-                        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                            <!-- Topbar Navbar -->
-                            <ul class="navbar-nav ml-auto col-md-8">
-                                <li class="nav-item">
-                                    <a class="nav-link">
-                                        <i class="" style="color:black">¡Hola!, <%out.print(nombre);%>..</i>
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+                <!-- Main Content -->
+                <div id="content">
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto col-md-8">
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    <i class="" style="color:black">¡Hola!, <%out.print(nombre);%>..</i>
 
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="navbar-nav ml-auto col-md-2">
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto col-md-2">
 
-                            </ul>
-                            <ul class="navbar-nav ml-auto col-md-2">
-                                <div class="topbar-divider d-none d-sm-block"></div>
-                                <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                                    </a>
+                        </ul>
+                        <ul class="navbar-nav ml-auto col-md-2">
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                                </a>
 
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" onclick="mensaje()">
-                                        <i class="fa fa-fw fa-sign-out-alt" style="color:black">Salir</i>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="">
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="mensaje()">
+                                    <i class="fa fa-fw fa-sign-out-alt" style="color:black">Salir</i>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="">
 
-                                    </a>
-                                </li>
-                                <div class="topbar-divider d-none d-sm-block"></div>
-                            </ul>
-                        </nav>
-                        <!-- End of Topbar -->
+                                </a>
+                            </li>
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                        </ul>
+                    </nav>
+                    <!-- End of Topbar -->
 
-                        <!-- CONTENIDO--> 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4>Pedido en Fila..</h4>
-                                    <div class="table-responsive">
-                                        <table id="myTable" class="tablesorter table table-bordred table-striped">
-                                            <thead>
-                                            <th>Numero de Pedido</th>
-                                            <th>Cliente</th>
-                                            <th>Cantidad de Productos</th>
-                                            <th>Descrip</th>
-                                            <th>Aceptar</th>
-                                            <th>Rechazar</th>
-                                            </thead>
-                                            <%
-                                                PedidoFilaEmpC ped = new PedidoFilaEmpC();
-                                                List<infoPedidoFila> list = ped.listar();
-                                                Iterator<infoPedidoFila> iter = list.iterator();
-                                                infoPedidoFila infP = null;
-                                                while (iter.hasNext()) {
-                                                    infP = iter.next();
-                                            %>
-                                            <tbody>
-                                                <tr>
-                                                    <td><%= infP.getNumeroPedido()%></td>
-                                                    <td><%= infP.getCliente()%></td>
-                                                    <td><%= infP.getCantidad()%></td>
-                                                    <td>
-                                                        <p data-placement="top" data-toggle="tooltip" title="Ver">
-                                                            <button class="btn btn-primary btn-xs container-fluid" data-title="Ver" data-toggle="modal" data-target="#view<%= infP.getNumeroPedido()%>">
-                                                                <span class="fas fa-fw fa-eye"></span>
-                                                            </button>
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        <p data-placement="top" title="Aceptar">
-                                                            <button class="btn btn-success btn-xs container-fluid" onclick="confir()" >
-                                                                <span class="fas fa-fw fa-check-circle"></span>
-                                                            </button>
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        <p data-placement="top" data-toggle="tooltip" title="Rechazar">
-                                                            <button class="btn btn-danger btn-xs container-fluid" data-title="Rechazar" data-toggle="modal" data-target="#delete" >
-                                                                <span class="fas fa-fw fa-times-circle"></span>
-                                                            </button>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
+                    <!-- CONTENIDO--> 
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Pedido en Fila..</h4>
 
-                                            <jsp:include page= "viewModal.jsp" flush="true"/>
-                                            <%}%>
 
-                                        </table>
-                                    </div> 
-                                </div>
+                                <div class="table-responsive">
+
+                                    <table id="table_id" class="display table">
+                                        <thead>
+                                        <th>Número de Pedido</th>
+                                        <th>Cliente</th>
+                                        <th>Cantidad de Productos</th>
+                                        <th>Descrip</th>
+                                        </thead>
+                                        <%
+                                            PedidoFilaEmpC ped = new PedidoFilaEmpC();
+                                            CUsuario user = emp.list(correo);
+
+                                            List<infoPedidoFila> list = ped.listar();
+                                            Iterator<infoPedidoFila> iter = list.iterator();
+                                            infoPedidoFila infP = null;
+                                            while (iter.hasNext()) {
+                                                infP = iter.next();
+                                        %>
+                                        <tbody>
+                                            <tr>
+                                                <td><%= infP.getNumeroPedido()%></td>
+                                                <td><%= infP.getCliente()%></td>
+                                                <td><%= infP.getCantidad()%></td>
+                                                <td>
+                                                    <p data-placement="top" data-toggle="tooltip" title="Ver">
+                                                        <button class="btn btn-primary btn-xs container-fluid" data-title="Ver" data-toggle="modal" data-target="#view<%= infP.getNumeroPedido()%>">
+                                                            <span class="fas fa-fw fa-eye"></span>
+                                                        </button>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                        <jsp:include page= "viewModal.jsp" flush="true"/>
+                                        <%}%>
+                                    </table>
+
+                                </div> 
+
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </body>
 
@@ -265,18 +253,19 @@
 
     <script src="./assets/js/jquery.js" type="text/javascript"></script>
     <script src="./assets/js/bootstrap.bundle.js" type="text/javascript"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
-    <script src="./assets/js/jquery.easing.js" type="text/javascript"></script>
+    <!--<script src="./assets/js/jquery.easing.js" type="text/javascript"></script>
     <script src="./assets/js/sb-adminEmp.min.js" type="text/javascript"></script>
 
     <script src="./assets/js/sb-admin-datatables.js" type="text/javascript"></script>
     <script src="./assets/js/sb-admin-charts.min.js" type="text/javascript"></script>
 
-    <script src="./assets/js/Chart.js" type="text/javascript"></script>
-    <!--Paula-->
-    <script src="./assets/js/demo.js" type="text/javascript"></script>
+    <script src="./assets/js/Chart.js" type="text/javascript"></script>-->
+    <!--Paula
+    <script src="./assets/js/demo.js" type="text/javascript"></script>-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 </html>

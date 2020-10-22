@@ -1,3 +1,4 @@
+
 function mensaje() {
     swal({
         title: "Estás seguro de cerrar sesión?",
@@ -11,29 +12,9 @@ function mensaje() {
             function () {
                 window.location.href = "index.html";
             });
-};
-
-function confir() {
-    swal({
-        title: "Estás seguro de cerrar sesión?",
-        text: "",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn-danger",
-        confirmButtonText: "Si, cerrar sesión!",
-        closeOnConfirm: false
-    },
-            function () {
-                window.location.href = "index.html";
-            });
-};
-/*
-function pregunta() {
-    if (confirm('¿Esta seguro de modificar los campos?')) {
-        document.accion.submit()
-    }
 }
-*/
+;
+
 //Filtro
 $(document).ready(function () {
     $('.filterable .btn-filter').click(function () {
@@ -49,7 +30,6 @@ $(document).ready(function () {
             $tbody.find('tr').show();
         }
     });
-
     $('.filterable .filters input').keyup(function (e) {
         /* Ignore tab key */
         var code = e.keyCode || e.which;
@@ -78,10 +58,138 @@ $(document).ready(function () {
         }
     });
 });
-/*
+
+
+$(document).ready(function () {
+    $('#table_id').DataTable(
+            {
+                "language":
+                        {
+                            "zeroRecords": "Elementos no encontrados...",
+                            "info": "Pagina _PAGE_ de _PAGES_",
+                            "infoEmpty": "No hay registros disponibles",
+                            "infoFiltered": "(filtered from _MAX_ total records)",
+                            "search": "Buscar",
+                            "lengthMenu": "",
+                            "paginate": {
+                                first: "Anterior",
+                                previous: "Anterior",
+                                next: "Siguiente",
+                            }
+                        }
+            });
+});
+
+/*function confirmar(NumeroPedido) {
+ if (confirm('Desea aceptar el pedido?')) {
+ location.href = "ControladorEmp?accion=" + NumeroPedido;
+ }
+ }
+ function confirm(url)
+ {
+ swal({
+ title: "Aceptar pedido",
+ text: "",
+ type: "warning",
+ showCancelButton: true,
+ confirmButtonClass: "btn-danger",
+ confirmButtonText: "Sí, aceptar!",
+ closeOnConfirm: false
+ },function (isConfirm) {
+ if (isConfirm) {
+ document.accion.action = url;
+ document.accion.submit();
+ swal("Aceptado!", "Your imaginary file has been deleted.", "success");
+ } else {
+ swal("Cancelled", "Your imaginary file is safe :)", "error");
+ }
+ });
+ 
+ };
+ 
+ 
+ 
+ 
  $(document).ready(function ()
  {
  $("#myTable").DataTable();
  }
  );
+ */
+
+/*
+ * 
+ * 
+ * 
+ * 
+ * 
+ 
+ function confirm('ControladorEmp?accion=confirmar')
+ {
+ swal({
+ title: "Aceptar pedido",
+ text: "",
+ type: "warning",
+ showCancelButton: true,
+ confirmButtonClass: "btn-danger",
+ confirmButtonText: "Sí, aceptar!",
+ closeOnConfirm: false
+ },
+ function () {
+ document.accion.action = 'ControladorEmp?accion=confirmar';
+ document.accion.submit();
+ });
+ 
+ }        ;
+ 
+ 
+ * 
+ * 
+ function confirm(url){
+ swal({
+ title: "Are you sure?",
+ text: "You will not be able to recover this imaginary file!",
+ type: "warning",
+ showCancelButton: true,
+ confirmButtonColor: "#DD6B55",
+ confirmButtonText: "Yes, delete it!",
+ closeOnConfirm: false
+ },
+ function(){
+ document.accion.action = url;
+ document.accion.submit();
+ swal("Deleted!", "Your imaginary file has been deleted.", "success");
+ }); 
+ };
+ 
+ function confirm(url)
+ {
+ document.accion.action = url;
+ document.accion.submit();
+ 
+ 
+ }*/
+/*
+ function confirm(url) {
+ swal({
+ title: "Estás seguro de cerrar sesión?",
+ text: "",
+ type: "warning",
+ showCancelButton: true,
+ confirmButtonClass: "btn-danger",
+ confirmButtonText: "Si, cerrar sesión!",
+ closeOnConfirm: false
+ },
+ function () {
+ window.open= url;
+ });
+ }
+ ;
+ 
+ /*
+ function pregunta() {
+ if (confirm('¿Esta seguro de modificar los campos?')) {
+ document.accion.submit()
+ }
+ }
  */

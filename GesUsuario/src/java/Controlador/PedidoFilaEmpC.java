@@ -6,6 +6,7 @@
 package Controlador;
 
 import Controlador.Conexion;
+import Modelo.descripcionPedido;
 import Modelo.infoPedidoFila;
 import ModeloVO.CUsuario;
 import java.sql.Connection;
@@ -27,10 +28,13 @@ public class PedidoFilaEmpC extends Conexion {
     public static ResultSet rs;
     infoPedidoFila ped = new infoPedidoFila();
     CUsuario user = new CUsuario();
+    descripcionPedido des = new descripcionPedido();
+    
+    
 
     public List listar() {
         ArrayList<infoPedidoFila> list = new ArrayList<>();
-        String sql = "select dt.id_pedido as NumeroPedido, concat(cl.nombre_cliente, ' ', cl.apellido_cliente) as cliente, sum(dt.cantidad) as cantidad from detalle_compras dt inner join pedido pd on pd.id_pedido=dt.id_pedido inner join cliente cl on cl.id_cliente=pd.id_cliente group by dt.id_pedido";
+        String sql = "SELECT * FROM vw_pedidos_activos order by NumeroPedido desc";
         try {
             ps = getConexion().prepareStatement(sql);
             rs = ps.executeQuery();
@@ -45,9 +49,10 @@ public class PedidoFilaEmpC extends Conexion {
         }
         return list;
     }
-
-    public infoPedidoFila list(int NumeroPedido) {
-        String sql = "select dt.id_pedido as NumeroPedido, concat(cl.nombre_cliente, ' ', cl.apellido_cliente) as cliente, pr.nombre_producto as producto, dt.cantidad as cantidad, pd.numero_mesa as numeroMesa from detalle_compras dt inner join producto pr on pr.id_producto=dt.id_producto inner join pedido pd on pd.id_pedido=dt.id_pedido inner join cliente cl on cl.id_cliente=pd.id_cliente WHERE NumeroPedido = " + NumeroPedido;
+/*
+    public List descripcionPedido(int NumeroPedido) {
+        ArrayList<infoPedidoFila> list = new ArrayList<>();
+        String sql = "SELECT * FROM vw_detalle_pedido where NumeroPedido = " + NumeroPedido;
         try {
             ps = getConexion().prepareStatement(sql);
             rs = ps.executeQuery();
@@ -60,9 +65,55 @@ public class PedidoFilaEmpC extends Conexion {
             }
         } catch (Exception e) {
         }
-        return ped;
+        return list;
     }
-
+    
+     public List descripcionPedido() {
+        ArrayList<infoPedidoFila> list = new ArrayList<>();
+        String sql = "SELECT * FROM vw_detalle_pedido";
+        try {
+            ps = getConexion().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                ped.setNumeroPedido(rs.getInt("NumeroPedido"));
+                ped.setCliente(rs.getString("cliente"));
+                ped.setCantidad(rs.getInt("cantidad"));
+                ped.setProducto(rs.getString("producto"));
+                ped.setNumeroMesa(rs.getInt("numeroMesa"));
+                list.add(ped);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }   
+    
+    */
+    
+    
+//Modal Descripcion del Pedido    
+    
+    public ArrayList descripcionPedido(int NumeroPedido) {
+        ArrayList list = new ArrayList();
+        try {
+            String sql = "SELECT * FROM vw_detalle_pedido WHERE NumeroPedido = "+NumeroPedido;
+            ps = getConexion().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                for (int x=0; x<=rs.getMetaData().getColumnCount(); x++){
+                     int dd = x+1;
+                     descripcionPedido descrip = new descripcionPedido(
+                             rs.getInt(dd), rs.getString("cliente"),rs.getString("producto"),rs.getInt("cantidad"),rs.getInt("numeroMesa")
+                     );
+                     list.add(descrip);                   
+                } 
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }   
+    
+    
     public infoPedidoFila buscarPedido(int NumeroPedido) {
         Conexion conex = new Conexion();
         infoPedidoFila ped = new infoPedidoFila();
@@ -79,6 +130,7 @@ public class PedidoFilaEmpC extends Conexion {
                 ped.setProducto(res.getString("producto"));
                 ped.setCantidad(Integer.parseInt(res.getString("cantidad")));
                 ped.setNumeroMesa(Integer.parseInt(res.getString("numeroMesa")));
+                
             }
             res.close();
 
@@ -93,16 +145,18 @@ public class PedidoFilaEmpC extends Conexion {
             return null;
         }
     }
-    
+   
+    ///Pedidos Realizados
+    ///
     public List listarPedidos(String correo) {
         ArrayList<infoPedidoFila> list = new ArrayList<>();
-        String sql = "select id_pedido as NumeroPedido, fecha_ingreso as fecha, costo_total, concat(c.nombre_cliente, ' ', c.apellido_cliente) as cliente, numero_mesa from pedido pe inner join empleado em on em.id_empleado =pe.id_empleado inner join cliente c on c.id_cliente=pe.id_cliente inner join usuario u on u.id_usuario=em.id_usuario where u.correo = '"+correo+"'";
+        String sql = "SELECT * FROM vw_pedido_realizado where correo = '"+correo+"'";
         try {
             ps = getConexion().prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 infoPedidoFila ped = new infoPedidoFila();
-                ped.setNumeroPedido(rs.getInt("NumeroPedido"));
+                ped.setNumeroPedido(rs.getInt("id_pedido"));
                 ped.setFecha(rs.getString("fecha"));
                 ped.setCliente(rs.getString("cliente"));
                 ped.setCosto(rs.getInt("costo_total"));
@@ -113,7 +167,8 @@ public class PedidoFilaEmpC extends Conexion {
         }
         return list;
     }
-
+    
+    
     public infoPedidoFila buscarRealizados(String correo) {
          ArrayList<infoPedidoFila> list = new ArrayList<>();
         Conexion conex = new Conexion();
@@ -144,6 +199,24 @@ public class PedidoFilaEmpC extends Conexion {
             return ped;
         } else {
             return null;
+        }
+    }
+    
+    ////Actualizar campos estado y empleado de la tabla pedido
+    
+    public void modificarPedido(infoPedidoFila mod) {
+        try {
+            String consulta = "update pedido set id_estado = 2, id_empleado = ? where id_pedido = ?";
+            PreparedStatement estatuto = getConexion().prepareStatement(consulta);
+
+            estatuto.setInt(1, mod.getId_empleado());
+            estatuto.setInt(2, mod.getNumeroPedido());
+            estatuto.executeUpdate();
+            
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
         }
     }
 }

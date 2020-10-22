@@ -69,7 +69,7 @@ public class EmpleadoC extends Conexion {
 
         try {
             Connection con = conexion.getConexion();
-            String buscar = ("SELECT em.nombre_empleado, em.apellido_empleado, u.correo FROM empleado em INNER JOIN usuario u on u.id_usuario=em.id_usuario WHERE u.correo = '" + correo + "'");
+            String buscar = ("SELECT em.id_empleado,em.nombre_empleado, em.apellido_empleado, u.correo FROM empleado em INNER JOIN usuario u on u.id_usuario=em.id_usuario WHERE u.correo = '" + correo + "'");
             ps = con.prepareStatement(buscar);
             rs = ps.executeQuery();
             while (rs.next()) {

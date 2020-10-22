@@ -96,7 +96,7 @@
                     <!-- Divider -->
                     <hr class="sidebar-divider my-0">
                     <!-- Nav Item - Dashboard -->
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="ControladorEmp?accion=inicio">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span>Inicio</span></a>
@@ -117,7 +117,7 @@
                     </li>
 
                     <!-- Nav Item - Utilities Collapse Menu -->
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link collapsed" href="ControladorEmp?accion=listar">
                             <!--data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities"-->
                             <i class="fas fa-fw fa-book"></i>
