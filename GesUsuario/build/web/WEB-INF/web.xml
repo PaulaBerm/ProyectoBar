@@ -24,6 +24,26 @@
         <servlet-name>ControladorEmp</servlet-name>
         <servlet-class>Servlet.ControladorEmp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controlador</servlet-name>
+        <servlet-class>Controlador.Controlador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>controladorpro</servlet-name>
+        <servlet-class>Controlador.controladorpro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>controladorimg</servlet-name>
+        <servlet-class>Controlador.controladorimg</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>Controlador.NewServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>controladoremp</servlet-name>
+        <servlet-class>Controlador.controladoremp</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/Iniciar</url-pattern>
@@ -47,6 +67,26 @@
     <servlet-mapping>
         <servlet-name>ControladorIMG</servlet-name>
         <url-pattern>/ControladorIMG</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador</servlet-name>
+        <url-pattern>/Controlador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controladorpro</servlet-name>
+        <url-pattern>/controladorpro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controladorimg</servlet-name>
+        <url-pattern>/controladorimg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controladoremp</servlet-name>
+        <url-pattern>/controladoremp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

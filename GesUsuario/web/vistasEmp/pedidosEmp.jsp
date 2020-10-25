@@ -4,6 +4,8 @@
     Author     : Paula
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Modelo.descripcionPedido"%>
 <%@page import="ModeloVO.CUsuario"%>
 <%@page import="Controlador.EmpleadoC"%>
 <%@page import="java.util.Iterator"%>
@@ -89,7 +91,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="ControladorEmp?accion=inicio">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>Inicio</span></a>
+                            <span>Inicio</span>
+                        </a>
                     </li>
                     <!-- Divider -->
                     <hr class="sidebar-divider">
@@ -131,6 +134,7 @@
                     <hr class="sidebar-divider">
                     <!-- Heading Titulo-->
                     <div class="sidebar-heading">
+                        Perfil
                     </div>
 
                     <!-- Nav Item - Charts 
@@ -195,49 +199,46 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h4>Pedido en Fila..</h4>
-
-
                                 <div class="table-responsive">
-
                                     <table id="table_id" class="display table">
                                         <thead>
                                         <th>Número de Pedido</th>
                                         <th>Cliente</th>
                                         <th>Cantidad de Productos</th>
-                                        <th>Descrip</th>
+                                        <th>Productos</th>
                                         </thead>
-                                        <%
-                                            PedidoFilaEmpC ped = new PedidoFilaEmpC();
-                                            CUsuario user = emp.list(correo);
-
-                                            List<infoPedidoFila> list = ped.listar();
-                                            Iterator<infoPedidoFila> iter = list.iterator();
-                                            infoPedidoFila infP = null;
-                                            while (iter.hasNext()) {
-                                                infP = iter.next();
-                                        %>
                                         <tbody>
+                                            <%
+                                                PedidoFilaEmpC ped = new PedidoFilaEmpC();
+                                                CUsuario user = emp.list(correo);
+                                                List<infoPedidoFila> list = ped.listar();
+                                                Iterator<infoPedidoFila> iter = list.iterator();
+                                                infoPedidoFila infP = null;
+                                                while (iter.hasNext()) {
+                                                    infP = iter.next();
+                                                    int id = infP.getNumeroPedido();
+                                                    // infoPedidoFila p = ped.buscarPedido(infP.getNumeroPedido());
+                                                    //ArrayList<descripcionPedido> descripcion = ped.descripcionPedido(infP.getNumeroPedido());                                                    
+%>
                                             <tr>
-                                                <td><%= infP.getNumeroPedido()%></td>
-                                                <td><%= infP.getCliente()%></td>
-                                                <td><%= infP.getCantidad()%></td>
-                                                <td>
+                                                <td class="center"><%= infP.getNumeroPedido()%></td>
+                                                <td class="center"><%= infP.getCliente()%></td>
+                                                <td class="center"><%= infP.getCantidad()%></td>
+                                                <td class="center">
                                                     <p data-placement="top" data-toggle="tooltip" title="Ver">
-                                                        <button class="btn btn-primary btn-xs container-fluid" data-title="Ver" data-toggle="modal" data-target="#view<%= infP.getNumeroPedido()%>">
+                                                        <button class="btn btn-primary btn-xs container-fluid" data-title="Ver" data-toggle="modal" data-target="#view<%=infP.getNumeroPedido()%>">
                                                             <span class="fas fa-fw fa-eye"></span>
                                                         </button>
                                                     </p>
                                                 </td>
                                             </tr>
+                                            <%}%>
                                         </tbody>
-
                                         <jsp:include page= "viewModal.jsp" flush="true"/>
-                                        <%}%>
+
                                     </table>
-
                                 </div> 
-
-                            </div>
+                            </div>                        
                         </div>
                     </div>
                 </div>
@@ -268,4 +269,27 @@
     <!--Paula
     <script src="./assets/js/demo.js" type="text/javascript"></script>-->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+    <script>
+                                    $(document).ready(function () {
+                                        $('#table_id').DataTable(
+                                                {
+                                                    "language":
+                                                            {
+                                                                "zeroRecords": "Elementos no encontrados...",
+                                                                "info": "Pagina _PAGE_ de _PAGES_",
+                                                                "infoEmpty": "No hay registros disponibles",
+                                                                "infoFiltered": "(filtered from _MAX_ total records)",
+                                                                "search": "Buscar",
+                                                                "lengthMenu": "",
+                                                                "paginate": {
+                                                                    first: "Anterior",
+                                                                    previous: "Anterior",
+                                                                    next: "Siguiente",
+                                                                }
+                                                            }
+                                                });
+                                    });
+
+    </script>
 </html>

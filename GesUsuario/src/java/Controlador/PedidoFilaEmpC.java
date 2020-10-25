@@ -85,17 +85,41 @@ public class PedidoFilaEmpC extends Conexion {
         } catch (Exception e) {
         }
         return list;
-    }   
+    } 
+    
+        public List descripcionPedido(int NumeroPedido) {
+        ArrayList<infoPedidoFila> list = new ArrayList<>();
+        String sql = "SELECT * FROM vw_detalle_pedido where NumeroPedido = " + NumeroPedido;
+        try {
+            ps = getConexion().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                ped.setNumeroPedido(rs.getInt("NumeroPedido"));
+                ped.setCliente(rs.getString("cliente"));
+                ped.setCantidad(rs.getInt("cantidad"));
+                ped.setProducto(rs.getString("producto"));
+                ped.setNumeroMesa(rs.getInt("numeroMesa"));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }     
     
     */
     
     
 //Modal Descripcion del Pedido    
     
+
     public ArrayList descripcionPedido(int NumeroPedido) {
         ArrayList list = new ArrayList();
+         String sql = "select dt.id_pedido as NumeroPedido, concat(cl.nombre_cliente, ' ', cl.apellido_cliente) as cliente, pr.nombre_producto as producto, dt.cantidad as cantidad, pd.numero_mesa as numeroMesa\n" +
+"from detalle_compras dt\n" +
+"inner join producto pr on pr.id_producto=dt.id_producto\n" +
+"inner join pedido pd on pd.id_pedido=dt.id_pedido\n" +
+"inner join cliente cl on cl.id_cliente=pd.id_cliente where dt.id_pedido="+NumeroPedido;
         try {
-            String sql = "SELECT * FROM vw_detalle_pedido WHERE NumeroPedido = "+NumeroPedido;
+           
             ps = getConexion().prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -111,16 +135,21 @@ public class PedidoFilaEmpC extends Conexion {
             e.printStackTrace();
         }
         return list;
-    }   
+    }
     
     
     public infoPedidoFila buscarPedido(int NumeroPedido) {
         Conexion conex = new Conexion();
         infoPedidoFila ped = new infoPedidoFila();
         boolean existe = false;
+        
         try {
             //Statement estatuto = conex.getConnection().createStatement();
-            PreparedStatement consulta = conex.getConexion().prepareStatement("SELECT * FROM vw_detalle_pedido where NumeroPedido = ? ");
+            PreparedStatement consulta = conex.getConexion().prepareStatement("select dt.id_pedido as NumeroPedido, concat(cl.nombre_cliente, ' ', cl.apellido_cliente) as cliente, pr.nombre_producto as producto, dt.cantidad as cantidad, pd.numero_mesa as numeroMesa\n" +
+"from detalle_compras dt\n" +
+"inner join producto pr on pr.id_producto=dt.id_producto\n" +
+"inner join pedido pd on pd.id_pedido=dt.id_pedido\n" +
+"inner join cliente cl on cl.id_cliente=pd.id_cliente where dt.id_pedido = ? ");
             consulta.setInt(1, NumeroPedido);
             ResultSet res = consulta.executeQuery();
             while (res.next()) {

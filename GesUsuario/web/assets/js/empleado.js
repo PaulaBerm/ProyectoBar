@@ -60,25 +60,6 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function () {
-    $('#table_id').DataTable(
-            {
-                "language":
-                        {
-                            "zeroRecords": "Elementos no encontrados...",
-                            "info": "Pagina _PAGE_ de _PAGES_",
-                            "infoEmpty": "No hay registros disponibles",
-                            "infoFiltered": "(filtered from _MAX_ total records)",
-                            "search": "Buscar",
-                            "lengthMenu": "",
-                            "paginate": {
-                                first: "Anterior",
-                                previous: "Anterior",
-                                next: "Siguiente",
-                            }
-                        }
-            });
-});
 
 /*function confirmar(NumeroPedido) {
  if (confirm('Desea aceptar el pedido?')) {

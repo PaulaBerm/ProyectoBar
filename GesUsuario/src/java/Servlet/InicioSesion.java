@@ -52,7 +52,7 @@ public class InicioSesion extends HttpServlet {
             String primero=String.valueOf(session.getAttribute("IDROL"));
             Integer segundo = Integer.parseInt(primero);
             if(segundo == 1){
-                response.sendRedirect("administrador.jsp");
+                response.sendRedirect("Administrador.jsp");
             }else if(segundo == 2 ){
                 response.sendRedirect("cliente.jsp");
             }else if(segundo == 3){

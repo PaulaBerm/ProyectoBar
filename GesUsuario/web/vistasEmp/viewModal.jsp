@@ -32,33 +32,42 @@
 <html> 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Descripcin</title>
     </head>
     <body>
-        <form  name="accion" action="ControladorEmp" method="post">
-            <%
-                PedidoFilaEmpC ped = new PedidoFilaEmpC();
-                CUsuario user = emp.list(correo);
-                List<infoPedidoFila> list = ped.listar();
-                Iterator<infoPedidoFila> iter = list.iterator();
-                infoPedidoFila infP = null;
-                while (iter.hasNext()) {
-                    infP = iter.next();
-                    ArrayList<descripcionPedido> descripcion = ped.descripcionPedido(infP.getNumeroPedido());
-                    //infoPedidoFila p = ped.buscarPedido(infP.getNumeroPedido());
-%>
 
-            <div class="modal fade" id="view<%= infP.getNumeroPedido()%>" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-                <div class="modal-dialog">
+        <%
+            PedidoFilaEmpC ped = new PedidoFilaEmpC();
+            
+            List<infoPedidoFila> list = ped.listar();
+            Iterator<infoPedidoFila> iter = list.iterator();
+            infoPedidoFila infP = null;
+            while (iter.hasNext()) {
+                infP = iter.next();
+               // ArrayList<descripcionPedido> descripcion = ped.descripcionPedido();
+                //infoPedidoFila p = ped.buscarPedido(infP.getNumeroPedido());
+        %>
+
+        <div class="modal fade" id="view<%= infP.getNumeroPedido()%>" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+           
+            <div class="modal-dialog">
+                <% 
+                   //infoPedidoFila fila = new infoPedidoFila();
+                   CUsuario user = emp.list(correo); 
+                   int id = infP.getNumeroPedido();
+                   //fila =(infoPedidoFila) ped.buscarPedido(id);
+                   ArrayList<descripcionPedido> descripcion = ped.descripcionPedido(id);
+                %>
+                <form  action="${pageContext.request.contextPath}/ControladorEmp" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                             <h4 class="modal-title custom_align" id="Heading">Descripcion del pedido...</h4>
                         </div>
                         <div class="modal-body" id="contenido">
-
                             <div class="card-body w-100">
-                                <input type="hidden" name="id" value="<%= infP.getNumeroPedido()%> ">
+
+                                <input type="hidden" name="id" value="<%= descripcion.get(0).getNumeroPedido()%> ">
                                 <div class="row">
                                     <div class="col-md-6 pr-1">
                                         <div class="form-group">
@@ -95,12 +104,13 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="modal-footer ">
                             <div class="row">
                                 <div class="col-md-6 pr-1">
-                                    <input type="hidden" name="txtPedido" value="<%= infP.getNumeroPedido()%>">
+                                    <input type="hidden" name="txtPedido" value="<%= descripcion.get(0).getNumeroPedido()%>">
                                     <input type="hidden" name="txtEmp" value="<%= user.getId_empleado()%>">                                    
                                     <input class="btn btn-success btn-lg" type="submit" name="accion" value="confirmar">
                                 </div>
@@ -111,10 +121,10 @@
                         </div>
                     </div>
                     <!-- /.modal-content --> 
-                </div>
-                <!-- /.modal-dialog -->
+                </form> 
             </div>
-            <%}%>
-        </form>
+            <!-- /.modal-dialog -->
+        </div>
+          <%}%> 
     </body>
 </html>

@@ -1,0 +1,50 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15-ago-2020, 15:21:37
+    Author     : cidra
+*/
+
+.daniel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height:0;
+    
+    
+      
+}
+.perso{
+    width: 500px;
+    border: 3px solid #E37900;
+    background: #999999;
+    
+}
+.persona{
+    width: 500px;
+    border: 3px solid #FFFFFF;
+    justify-content: center;
+    
+}
+
+
+.fondo{
+    background: #000000;
+}
+.fondi{
+    background: #FFFFFF;
+}
+   
+.boton{
+    background: #E37900;
+}
+.tabla{
+    background: #000000;
+}
+.fond{
+    background: #E37900;
+}
+

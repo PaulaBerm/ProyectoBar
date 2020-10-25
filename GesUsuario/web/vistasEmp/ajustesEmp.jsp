@@ -196,9 +196,9 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form name="accion" action="ControladorEmp?accion=Guardar Cambios" method="post" class="formulario" id="formulario">
+                                        <form name="accion" action="${pageContext.request.contextPath}/ControladorEmp?accion=Guardar Cambios" onsubmit="return validar()" method="post" class="formulario" id="formulario">
                                             <!-- Grupo: Nombre -->
-                                            <h5 class="title">Datos del Perfil</h5>
+                                            
                                             <div class="formulario__grupo" id="grupo__nombre">
                                                 <label for="nombre" class="formulario__label">Nombre</label>
                                                 <div class="formulario__grupo-input">

@@ -90,8 +90,11 @@ public class ControladorEmp extends HttpServlet {
             
             fila.setNumeroPedido(pedidos);
             fila.setId_empleado(empleado);
-            ped.modificarPedido(fila);
+            
+            if (action.equalsIgnoreCase("confirmar")) {
+                ped.modificarPedido(fila);
                 acceso = pedido;
+            }
         }
             RequestDispatcher vista = request.getRequestDispatcher(acceso);
             vista.forward(request, response);
