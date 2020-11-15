@@ -11,12 +11,23 @@ package ModeloVO;
  */
 public class CUsuario {
     private int id_empleado;
+    private int id_cliente;
     private int id_usuario;
     private String correo;
     private String contraseña;
     private String nombre;
     private String apellido;
     private int rol;
+
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+    
+    
 
     public int getId_empleado() {
         return id_empleado;

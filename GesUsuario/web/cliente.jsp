@@ -10,16 +10,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+      
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         
-        <title>JSP Page</title>
-       
+        <title>Cliente</title>
+        <link rel="icon" type="image/png" href="assets/img/Logo_2.png">
+       <style type="text/css">
+          
+            .img {
+                max-width: 300px;
+                width: 150%;
+                margin: auto;
+                position: relative;
+                align-content: center;
+                }
+        </style>
     </head>
     <body>
+        
         <div class="container mt-2">
+       
           
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="cliente.jsp">
+                <img class= "img1" img src="imgs/Logo.png" alt="#" /></a>
                 <a class="navbar-brand" href="ControladorC?accion=home">Carta</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -28,9 +42,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item">
-                            <a class="nav-link">Promociones <span class="sr-only">(current)</span></a>
-                        </li>
                           <li class="nav-item">
                               <a class="nav-link" href="ControladorC?accion=Carrito"><i class="fas fa-cart-plus"><label style="color: orange">${contador}</label></i>Carrito</a>
                         </li>
@@ -49,11 +60,12 @@
                             </div>
                         </div>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Cliente
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Mi cuenta
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Ajustes</a>
+                                 <a class="dropdown-item" href="pedidos.jsp">Pedidos</a>
+                                <a class="dropdown-item" href="ajustes.jsp">Ajustes</a>
                                 <a class="dropdown-item" href="#">Cerrar Sesion</a>
                               
                         </li>
@@ -75,7 +87,7 @@
                         <label>${p.getDescripcion()}</label>
                         <div>
                             <a  href="ControladorC?accion=AgregarCarrito&id=${p.getId()}" class= "btn btn-outline-info">Agregar a Carrito</a>
-                            <a href="#" class ="btn btn-outline-danger">Comprar</a>
+                            <a href="ControladorC?accion=AgregarCarrito&id=${p.getId()}" class ="btn btn-outline-danger">Comprar</a>
                         </div>
                         </div>
                     </div>

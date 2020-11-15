@@ -18,11 +18,13 @@ public class infoPedidoFila {
     int costo;
     String fecha;
     int id_empleado;
+    int costo_unidad;
+    String empelado;
 
     public infoPedidoFila() {
     }
 
-    public infoPedidoFila(int NumeroPedido, String cliente, int cantidad, String producto, int numeroMesa, int costo, String fecha,int id_empleado) {
+    public infoPedidoFila(int NumeroPedido, String cliente, int cantidad, String producto, int numeroMesa, int costo, String fecha,int id_empleado,int costo_unidad, String empelado) {
         this.NumeroPedido = NumeroPedido;
         this.cliente = cliente;
         this.cantidad = cantidad;
@@ -31,6 +33,26 @@ public class infoPedidoFila {
         this.costo = costo;
         this.fecha = fecha;
         this.id_empleado = id_empleado;
+        this.costo_unidad = costo_unidad;
+        this.empelado = empelado;
+    }
+
+    public String getEmpelado() {
+        return empelado;
+    }
+
+    public void setEmpelado(String empelado) {
+        this.empelado = empelado;
+    }
+    
+    
+
+    public int getCosto_unidad() {
+        return costo_unidad;
+    }
+
+    public void setCosto_unidad(int costo_unidad) {
+        this.costo_unidad = costo_unidad;
     }
 
     public int getId_empleado() {

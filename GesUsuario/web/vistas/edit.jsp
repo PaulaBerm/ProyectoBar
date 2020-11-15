@@ -69,7 +69,7 @@
                         <div class="sidebar-brand-icon rotate-n-15">
                             <i class=""></i>
                         </div> 
-                        <div class="">Administrador</div>
+                        <div class="" href="#">Administrador</div>
                         <br>
                     </a>
 
@@ -85,13 +85,15 @@
                     <hr class="sidebar-divider">
                     <!-- Nav Item - Utilities Collapse Menu -->
                     <li class="nav-item">
-                        <a class="nav-link collapsed" href="controladoremp?accion=listar" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <a class="nav-link collapsed" href="controladoremp?accion=" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                             <i class="fas fa-fw fa-cog"></i>
-                            <span>Registrar empleados </span>  
+                            <span>Tablas Fonda paisa </span>  
                         </a>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
-                                <h6 class="collapse-header">Registro:</h6>
+                                <h6 class="collapse-header">Bienvenido:</h6>
+                                <a class="collapse-item" href="">Tabla pedido</a>
+                                 <a class="collapse-item" href="Controlador?accion=tabla">Tabla empleado</a>
                             </div>
                         </div>
                     </li>
@@ -99,14 +101,15 @@
                     <hr class="sidebar-divider">
                     <!-- Nav Item - Utilities Collapse Menu -->
                     <li class="nav-item">
-                        <a class="nav-link collapsed" href="Controlador?accion=listarr" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                             <i class="fas fa-fw fa-cog"></i>
                             <span>Registros</span>
                         </a>
                         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="">Categorias</a>
+                                <a class="collapse-item" href="Controlador?accion=listarr">Categorias</a>
                                 <a class="collapse-item" href="">Productos</a>
+                                <a class="collapse-item" href="Controlador?accion=empleado">Empleados</a>
                             </div>
                         </div>
                     </li>
@@ -182,7 +185,7 @@
                                     int id = Integer.parseInt((String) request.getAttribute("idper"));
                                     categorias p = (categorias) dao.list(id);
                                 %>    
-                                <h1 class="text-center text-white">Modificar Persona</h1>
+                                <h1 class="text-center text-white"></h1>
                                 <form action="Controlador" class="persona">
 
                                     <b> Nombres:<br> </b> 

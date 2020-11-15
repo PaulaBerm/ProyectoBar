@@ -6,7 +6,24 @@ $(document).ready(function(){
             parent.location.href= "ControladorC?accion=Delete&id="+idp;
             parent.location.href= "ControladorC?accion=Carrito";
         }        
-    });    
+    }); 
+
+    $("tr #Cantidad").click(function (){
+        var idp = $(this).parent().find("#idp").val();
+      
+        var url="ControladorC?accion=ActualizarCantidad";
+        $.ajax({
+            type: 'POST',
+            url : url,
+            data: "idp=" + idp + "&Cantidad" + Cantidad,
+            success: function (data, textStatus, jqXHR) {
+                location.href="ControladorC?accion=Carrito";
+            }
+            
+        });
+    });
+
+
 });
 
 

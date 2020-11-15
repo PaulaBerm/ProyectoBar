@@ -4,6 +4,7 @@
     Author     : Paula
 --%>
 
+<%@page import="java.sql.ResultSet"%>
 <%@page import="Controlador.EmpleadoC"%>
 <%@page import="ModeloVO.CUsuario"%>
 <%@page import="Modelo.descripcionPedido"%>
@@ -38,41 +39,44 @@
 
         <%
             PedidoFilaEmpC ped = new PedidoFilaEmpC();
-            
+            CUsuario user = emp.list(correo);
             List<infoPedidoFila> list = ped.listar();
             Iterator<infoPedidoFila> iter = list.iterator();
             infoPedidoFila infP = null;
             while (iter.hasNext()) {
                 infP = iter.next();
-               // ArrayList<descripcionPedido> descripcion = ped.descripcionPedido();
-                //infoPedidoFila p = ped.buscarPedido(infP.getNumeroPedido());
+                // ArrayList<descripcionPedido> descripcion = ped.descripcionPedido();
+                infoPedidoFila p = ped.buscarPedido(infP.getNumeroPedido());
         %>
 
-        <div class="modal fade" id="view<%= infP.getNumeroPedido()%>" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-           
+
+        <div class="modal animated slideInUp custo-slideInUp" id="view<%= infP.getNumeroPedido()%>" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+
             <div class="modal-dialog">
-                <% 
-                   //infoPedidoFila fila = new infoPedidoFila();
-                   CUsuario user = emp.list(correo); 
-                   int id = infP.getNumeroPedido();
-                   //fila =(infoPedidoFila) ped.buscarPedido(id);
-                   ArrayList<descripcionPedido> descripcion = ped.descripcionPedido(id);
+                <%
+                    //infoPedidoFila fila = new infoPedidoFila();
+                    /*
+                    int id = infP.getNumeroPedido();
+                    //fila =(infoPedidoFila) ped.buscarPedido(id);
+                    ArrayList<descripcionPedido> descripcion = ped.descripcionPedido(id);*/
                 %>
                 <form  action="${pageContext.request.contextPath}/ControladorEmp" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                            <h4 class="modal-title custom_align" id="Heading">Descripcion del pedido...</h4>
+                            <h4 class="modal-title" id="Heading">Descripción del pedido...</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
                         </div>
                         <div class="modal-body" id="contenido">
                             <div class="card-body w-100">
 
-                                <input type="hidden" name="id" value="<%= descripcion.get(0).getNumeroPedido()%> ">
+                                <input type="hidden" name="id" value="<%= infP.getNumeroPedido()%> ">
                                 <div class="row">
                                     <div class="col-md-6 pr-1">
                                         <div class="form-group">
                                             <label>Pedido:</label>
-                                            <label name="cliente"><%= descripcion.get(0).getNumeroPedido()%> </label>
+                                            <label name="cliente"><%= infP.getNumeroPedido()%> </label>
                                         </div>
                                     </div>
                                 </div>
@@ -80,44 +84,69 @@
                                     <div class="col-md-6 pr-1">
                                         <div class="form-group">
                                             <label>Cliente:</label>
-                                            <label name="cliente"><%= descripcion.get(0).getCliente()%> </label>
+                                            <label name="cliente"><%= infP.getCliente()%> </label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 pr-2">
                                         <div class="form-group">
                                             <label># de Mesa:</label>
-                                            <label name="mesa"><%= descripcion.get(0).getNumeroMesa()%>  </label>
+                                            <label name="mesa"><%= p.getNumeroMesa()%>  </label>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-md-6 pr-1">
                                         <div class="form-group">
-                                            <label>Producto:</label>
-                                            <label name="producto"><%=  descripcion.get(0).getProducto()%>  </label>
+                                            <label>Productos:</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 pr-2">
                                         <div class="form-group">
                                             <label>Cantidad:</label>
-                                            <label name="cantidad"><%= descripcion.get(0).getCantidad()%>  </label>
                                         </div>
                                     </div>
                                 </div>
+                                <%
+                                    try {
 
+                                        ResultSet rs = ped.descripcionPedidoA(infP.getNumeroPedido());
+                                        if (!rs.next()) {
+                                            out.println("<label>No hay datos</label>");
+                                        } else {
+                                            do {
+
+                                                out.println("<div class=\"row\">");
+                                                out.println("<div class=\"col-md-6 pr-1\">");
+                                                out.println("<div class=\"form-group\">");
+                                                out.println("<label> * " + rs.getString("producto") + "</label>");
+                                                out.println("</div>");
+                                                out.println("</div>");
+                                                out.println("<div class=\"col-md-6 pr-1\">");
+                                                out.println("<div class=\"form-group\">");
+                                                out.println("<label>" + rs.getInt("cantidad") + "</label>");
+                                                out.println("</div>");
+                                                out.println("</div>");
+                                                out.println("</div>");
+                                            } while (rs.next());
+                                        }
+                                    } catch (Exception e3) {
+                                        System.out.println("No hizo conexion");
+                                        e3.printStackTrace(System.err);
+                                    }%>
                             </div>
                         </div>
-                        <div class="modal-footer ">
-                            <div class="row">
-                                <div class="col-md-6 pr-1">
-                                    <input type="hidden" name="txtPedido" value="<%= descripcion.get(0).getNumeroPedido()%>">
-                                    <input type="hidden" name="txtEmp" value="<%= user.getId_empleado()%>">                                    
-                                    <input class="btn btn-success btn-lg" type="submit" name="accion" value="confirmar">
-                                </div>
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-danger btn-lg" style="width: 100%;" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-ok-sign"></span> Cancelar</button>
-                                </div>                       
+                        <div class="modal-footer md-button">
+                            <div class="">
+                                <input type="hidden" name="txtPedido" value="<%= infP.getNumeroPedido()%>">
+                                <input type="hidden" name="txtEmp" value="<%= user.getId_empleado()%>">                                    
+                                <input id="success" class="mr-2 btn btn-primary" type="submit" name="accion" value="confirmar">
                             </div>
+                            <div>
+                                <button type="button" class="btn"  data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancelar</button>
+                            </div>
+
+
                         </div>
                     </div>
                     <!-- /.modal-content --> 
@@ -125,6 +154,7 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-          <%}%> 
+        <%}%> 
     </body>
+
 </html>
